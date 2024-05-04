@@ -30,10 +30,24 @@ def passwordChecker(password):
 print(passwordChecker("python2")) #<---- fail
 print(passwordChecker("Tam20eka")) #<----- pass
 
-#Task 2 Psuedocode
+#Task 3 Psuedocode
 
-#   Create a func called passwordChecker w/ 2 paras
+#   Create a func called emailFormatChecker w/ 1 para
 #      Define 2 vars = character and number
 #        Check if password is at least 8 characters long, has at least 1 upper and lowercase characters, and contains a number
 #               if so, return an approval message        
 #               if not, return an error message      
+
+def emailFormatChecker(email):
+    char_At_Symbol = "@"
+    char_Dot_Symbol = "."
+    domainNames = ["com", "net"]
+
+    for i in email: #<- also tried range(len(email))
+        # return "You entered a valid email address" if email[i].isalnum() and char_At_Symbol[i] in email[i] and char_Dot_Symbol[i] in email[i] and domainNames[i] in email[i] else "You entered an invalid email address..."
+        return "You entered a valid email address" if email.isalnum() and char_At_Symbol in email and char_Dot_Symbol in email and domainNames[i] in email else "You entered an invalid email address..."
+
+#^ Getting else condition as the return?
+
+        
+print(emailFormatChecker("tamekaR2@xxxx.net")) #<---- pass
