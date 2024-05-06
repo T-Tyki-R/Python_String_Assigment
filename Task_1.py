@@ -9,24 +9,24 @@
 #             if true -> store a replace() method where you replace the keyword with a upper version inside the string var
 #             print the string var             
 
-keyword_Finder = ["good", "excellent", "bad", "poor", "average"]
-posWord = ["good", "excellent"]
-negWord = ["bad", "poor", "average"]
-python_Reviews = [ "This product is really good. I'm impressed with its quality.", 
+keyword_finder = ["good", "excellent", "bad", "poor", "average"]
+pos_word = ["good", "excellent"]
+neg_word = ["bad", "poor", "average"]
+python_reviews = [ "This product is really good. I'm impressed with its quality.", 
                   "The performance of this product is excellent. Highly recommended!", 
                   "I had a bad experience with this product. It didn't meet my expectations.", 
                   "Poor quality product. Wouldn't recommend it to anyone.", 
                   "The product was average. Nothing extraordinary about it." 
 ]   
 
-def keyword_Highlighter(word = "", text = ""):   
-    capWords = ""   
-    for i in range(len(text)):       
-        if word[i].casefold() in text[i].casefold():
-            capWords = text[i].replace(word[i], word[i].upper())
-            print(f"{capWords}") # <- prints out everything but the uppercase of the 4th statement
-#           return f"{capWords}" # <- prints out only 1 statement             
-            
+def keyword_Highlighter(keyword, text):   
+    cap_words = ""   
+    for word in range(len(text)):       
+        if keyword[word] in text[word].lower():
+            x = keyword[word].upper()
+            cap_words += x + " "
+    print(f"{cap_words}") # <- prints out all the keywords in caps, but not the sentences
+           
 # Task 2 Psuedocode
 #     Create a func called keyword_Score with 3 para
 #         Define 2 integer vars = posCount and negCount
@@ -59,6 +59,6 @@ def review_Summary(text):
         print(f"{text[i].partition(".")[0]}...") 
               
 
-# print(keyword_Highlighter(keyword_Finder, python_Reviews))
+print(keyword_Highlighter(keyword_finder, python_reviews))
 # print(keyword_Counter(posWord, negWord, python_Reviews))
-print(review_Summary(python_Reviews))
+# print(review_Summary(python_Reviews))
