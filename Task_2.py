@@ -1,7 +1,5 @@
 # User Input Data Processor
 
-
-
 #Task 1 Psuedocode
 
 #   Create a func called nameChecker w/ 2 paras
@@ -21,33 +19,33 @@ print(nameChecker("Tameka", "Roberson"))
 #               if so, return an approval message        
 #               if not, return an error message      
 
-def passwordChecker(password):
+def password_checker(password):
     lowerCase = 'abcdefghijklmnopqrstuvwxyz'
     upperCase = lowerCase.upper()
     for i in range(len(password)):
-        return f"{password} is an appropriate password" if len(upperCase[i]) >= 1 and len(lowerCase[i]) >= 1 and password[i].isalnum() and len(password) >= 8 else "Your password needs to have the following:\n8 or more characters\nAt least 1 uppercase character\nAt least 1 lowercase character\nAt least 1 number"
+        return f"{password} is an appropriate password\n" if len(upperCase[i]) >= 1 and len(lowerCase[i]) >= 1 and password[i].isalnum() and len(password) >= 8 else "Your password needs to have the following:\n8 or more characters\nAt least 1 uppercase character\nAt least 1 lowercase character\nAt least 1 number\n"
 
-print(passwordChecker("python2")) #<---- fail
-print(passwordChecker("Tam20eka")) #<----- pass
+print(password_checker("python2")) #<---- fail
+print(password_checker("Tam20eka")) #<----- pass
 
-#Task 3 Psuedocode
 
-#   Create a func called emailFormatChecker w/ 1 para
-#      Define 2 vars = character and number
-#        Check if password is at least 8 characters long, has at least 1 upper and lowercase characters, and contains a number
-#               if so, return an approval message        
-#               if not, return an error message      
-
-def emailFormatChecker(email):
-    char_At_Symbol = "@"
-    char_Dot_Symbol = "."
-    domainNames = ["com", "net"]
-
-    for i in email: #<- also tried range(len(email))
-        # return "You entered a valid email address" if email[i].isalnum() and char_At_Symbol[i] in email[i] and char_Dot_Symbol[i] in email[i] and domainNames[i] in email[i] else "You entered an invalid email address..."
-        return "You entered a valid email address" if email.isalnum() and char_At_Symbol in email and char_Dot_Symbol in email and domainNames[i] in email else "You entered an invalid email address..."
-
-#^ Getting else condition as the return?
-
-        
-print(emailFormatChecker("tamekaR2@xxxx.net")) #<---- pass
+def email_format_checker(email):
+    email = email.lower()
+    local_part, domain_part = email.split('@', 1)
+  
+    if not local_part or not domain_part:
+        return False
+  
+    if ' ' in local_part or ' ' in domain_part:
+        return False
+   
+    if '.' not in domain_part or domain_part == '.':
+        return False
+    
+    if not local_part.isalnum() and not domain_part.isalpha():
+        return False
+    
+    return True
+      
+print(email_format_checker("abc111@xxx.com")) #<---- pass
+print(email_format_checker("ffff@ddddcom"))#<---- fail
